@@ -121,7 +121,7 @@ RSpec.describe 'merchant dashboard' do
   end
 
   it 'shows a link that leads to the discounts index page' do
-    save_and_open_page
+
     expect(page).to have_link("My Discounts")
 
     click_link("My Discounts")
