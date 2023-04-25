@@ -11,7 +11,7 @@ RSpec.describe 'Bulk Discount Index Page', type: :feature do
   describe "I see all of my bulk discounts and their attributes" do
     it 'shows bulk discounts and their attributes' do
       visit merchant_bulk_discounts_path(@merchant1)
-
+save_and_open_page
       within "#discount_#{@discount1.id}" do
         expect(page).to have_link(@discount1.name)
         expect(page).to have_content("Discount Percentage: #{@discount1.discount}")
@@ -20,6 +20,10 @@ RSpec.describe 'Bulk Discount Index Page', type: :feature do
         expect(page).to_not have_link(@discount2.name)
         expect(page).to_not have_content("Discount Percentage: #{@discount2.discount}")
         expect(page).to_not have_content("Number of items for discount: #{@discount2.threshold}")
+
+        click_link("#{@discount1.name}")
+
+        expect(current_path).to eq(merchant_bulk_discount_path(@merchant1, discount))
       end
     end
   end
