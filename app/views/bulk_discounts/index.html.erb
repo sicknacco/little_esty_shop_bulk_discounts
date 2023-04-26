@@ -2,8 +2,10 @@
 
 <% @discounts.each do |discount| %>
   <section id="discount_<%= discount.id %>">
-  <p>Discount: <%= link_to discount.name, merchant_bulk_discount_path(@merchant, discount) %></p>
-  <p>Discount Percentage: <%= discount.discount %></p>
-  <p>Number of items for discount: <%= discount.threshold %>
+    <p>Discount: <%= link_to discount.name, merchant_bulk_discount_path(@merchant, discount) %></p>
+    <p>Discount Percentage: <%= discount.discount %></p>
+    <p>Number of items for discount: <%= discount.threshold %>
   </section>
 <% end %>
+
+<p><%= link_to "Create Discount", new_merchant_bulk_discount_path(@merchant) %></p>
